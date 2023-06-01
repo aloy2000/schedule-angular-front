@@ -21,7 +21,6 @@ export class TableColumnComponent {
     });
 
     dialog.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }

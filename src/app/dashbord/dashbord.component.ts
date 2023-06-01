@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleService, ScheduleType } from '../services/schedule.service';
-import { MatDatepicker } from '@angular/material/datepicker';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashbord',
@@ -15,7 +15,7 @@ export class DashbordComponent implements OnInit {
   heures : string[] = ['09:00', '10:00','11:00'];
 
 
-  constructor(private scheduleService: ScheduleService) {}
+  constructor(private scheduleService: ScheduleService,private authService: AuthService) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('role') === 'professeur') {
@@ -29,8 +29,12 @@ export class DashbordComponent implements OnInit {
   
   onGetSchedule() {
     this.scheduleService.getSchedule().subscribe((res: ScheduleType[]) => {
-      console.log("response:", res)
       this.scheduleData = res;
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
   }
 }

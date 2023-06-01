@@ -19,7 +19,6 @@ export class AuthService {
       })
       .pipe(
         tap((response: any) => {
-          console.log("response login:", response)
           this.loggedIn = true;
           localStorage.setItem('token', response?.token);
           localStorage.setItem('role', response?.role);

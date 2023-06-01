@@ -10,7 +10,6 @@ export class AppComponent {
   title = 'projet-planing-angular';
 
   constructor() {
-    console.log("isLogged:", this.isLogged);
     
   }
 

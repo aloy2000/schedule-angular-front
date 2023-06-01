@@ -27,13 +27,12 @@ export class DialogComponent implements OnInit {
   async updateCourse() {
     this.scheduleService.updateSchedule(this.course).subscribe((res) => {
       this.cdr.detectChanges();
-      // window.location.reload();
+      window.location.reload();
     });
   }
 
   async deleteCourse() {
     this.scheduleService.deleteSchedule(this.course).subscribe((res) => {
-      console.log('delete success:', res);
       window.location.reload();
     });
   }

@@ -1,24 +1,49 @@
-<h2 mat-dialog-title style="text-align: center">Mise à jour du cours</h2>
+<h2 mat-dialog-title style="text-align: center" *ngIf="professeurOrNot">
+  Mise à jour du cours
+</h2>
+<h2 mat-dialog-title style="text-align: center" *ngIf="!professeurOrNot">
+  Détails du cours
+</h2>
 <mat-dialog-content class="mat-typography">
   <form class="form">
-    <div style="margin-top: 10px;">
+    <div style="margin-top: 10px">
       <mat-form-field style="margin-right: 10px" appearance="outline">
         <mat-label>Thème</mat-label>
-        <input matInput name="theme" [(ngModel)]="course.theme" [disabled]="!professeurOrNot" />
+        <input
+          matInput
+          name="theme"
+          [(ngModel)]="course.theme"
+          [disabled]="!professeurOrNot"
+        />
       </mat-form-field>
       <mat-form-field style="margin-right: 10px" appearance="outline">
         <mat-label>Heure</mat-label>
-        <input matInput name="heure" [(ngModel)]="course.heure" [disabled]="!professeurOrNot" />
+        <input
+          matInput
+          name="heure"
+          [(ngModel)]="course.heure"
+          [disabled]="!professeurOrNot"
+        />
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field style="margin-right: 10px" appearance="outline" >
+      <mat-form-field style="margin-right: 10px" appearance="outline">
         <mat-label>Niveau</mat-label>
-        <input matInput name="level" [(ngModel)]="course.Level" [disabled]="!professeurOrNot" />
+        <input
+          matInput
+          name="level"
+          [(ngModel)]="course.Level"
+          [disabled]="!professeurOrNot"
+        />
       </mat-form-field>
       <mat-form-field style="margin-right: 10px" appearance="outline">
         <mat-label>Periode</mat-label>
-        <input matInput name="periode" [(ngModel)]="course.Periode" [disabled]="!professeurOrNot" />
+        <input
+          matInput
+          name="periode"
+          [(ngModel)]="course.Periode"
+          [disabled]="!professeurOrNot"
+        />
       </mat-form-field>
     </div>
     <div class="professeur">Professeur: {{ course.professeurs[0].nom }}</div>

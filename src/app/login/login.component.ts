@@ -41,16 +41,14 @@ export class LoginComponent implements OnInit {
     this.authService
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe((res) => {
-        console.log('response:', res.error);
         if (res.token) {
           this.router.navigate(['/dashboard']);
+          
         }
       }, (error) => {
-        console.log("error:", error.error.message)
-        this.snackBar.open(error.error.message, 'Close', {
+        this.snackBar.open('identifiant erroné', 'Close', {
           duration: 2000,
           verticalPosition: 'top',
-          
         })
       });
   }
