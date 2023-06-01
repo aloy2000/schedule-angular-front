@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+
+.form .mat-form-field {
+    margin-right: 20px;
+}
+
+.professeur {
+    text-align: center;
+    margin-top: 20px;
+}

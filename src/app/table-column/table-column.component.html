@@ -1,0 +1,14 @@
+<td *ngFor="let day of days" class="tr-cursor">
+  <div *ngFor="let course of courses">
+    <div *ngIf="(course.Date | date : 'EEEE') === day && course.heure === hour" (click)="openDialog(course)">
+      <span
+        class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
+        >{{ course.theme }}</span
+      >
+      <div class="margin-10px-top font-size14">{{course.Level}}</div>
+      <div class="font-size13 text-light-gray">
+        {{ course.professeurs[0].nom }}
+      </div>
+    </div>
+  </div>
+</td>

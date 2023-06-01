@@ -1,0 +1,72 @@
+<div>
+  <div class="container">
+    <div class="timetable-img text-center"></div>
+    <div class="table-responsive">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr class="bg-light-gray">
+            <th class="text-uppercase">HEURE</th>
+            <th class="text-uppercase">Lundi</th>
+            <th class="text-uppercase">Mardi</th>
+            <th class="text-uppercase">Mercredi</th>
+            <th class="text-uppercase">Jeudi</th>
+            <th class="text-uppercase">Vendredi</th>
+            <th class="text-uppercase">Samedi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="align-middle">09:00</td>
+            <app-table-column
+              style="display: contents"
+              [days]="days"
+              [courses]="scheduleData"
+              [hour]="9"
+            ></app-table-column>
+          </tr>
+  
+          <tr>
+            <td class="align-middle">10:00</td>
+            <app-table-column
+              style="display: contents"
+              [days]="days"
+              [courses]="scheduleData"
+              [hour]="10"
+            ></app-table-column>
+          </tr>
+  
+          <tr>
+            <td class="align-middle">11:00</td>
+            <app-table-column
+              style="display: contents"
+              [days]="days"
+              [courses]="scheduleData"
+              [hour]="11"
+            ></app-table-column>
+          </tr>
+  
+          <tr>
+            <td class="align-middle">12:00</td>
+            <app-table-column
+              style="display: contents"
+              [days]="days"
+              [courses]="scheduleData"
+              [hour]="12"
+            ></app-table-column>
+          </tr>
+  
+          <tr>
+            <td class="align-middle">13:00</td>
+            <app-table-column
+              style="display: contents"
+              [days]="days"
+              [courses]="scheduleData"
+              [hour]="13"
+            ></app-table-column>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

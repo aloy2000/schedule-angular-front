@@ -1,0 +1,48 @@
+<h2 mat-dialog-title style="text-align: center">Mise à jour du cours</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="form">
+    <div style="margin-top: 10px;">
+      <mat-form-field style="margin-right: 10px" appearance="outline">
+        <mat-label>Thème</mat-label>
+        <input matInput name="theme" [(ngModel)]="course.theme" [disabled]="!professeurOrNot" />
+      </mat-form-field>
+      <mat-form-field style="margin-right: 10px" appearance="outline">
+        <mat-label>Heure</mat-label>
+        <input matInput name="heure" [(ngModel)]="course.heure" [disabled]="!professeurOrNot" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="margin-right: 10px" appearance="outline" >
+        <mat-label>Niveau</mat-label>
+        <input matInput name="level" [(ngModel)]="course.Level" [disabled]="!professeurOrNot" />
+      </mat-form-field>
+      <mat-form-field style="margin-right: 10px" appearance="outline">
+        <mat-label>Periode</mat-label>
+        <input matInput name="periode" [(ngModel)]="course.Periode" [disabled]="!professeurOrNot" />
+      </mat-form-field>
+    </div>
+    <div class="professeur">Professeur: {{ course.professeurs[0].nom }}</div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    style="background-color: rgba(204, 28, 28, 0.568); color: white"
+    [disabled]="!professeurOrNot"
+    (click)="deleteCourse()"
+  >
+    Supprimer
+  </button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    (click)="updateCourse()"
+    style="background-color: rgb(94, 180, 94); color: white"
+    cdkFocusInitial
+    [disabled]="!professeurOrNot"
+  >
+    Mettre à jour
+  </button>
+</mat-dialog-actions>
