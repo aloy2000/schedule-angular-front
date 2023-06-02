@@ -1,0 +1,176 @@
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+      <p>Inscription</p>
+    </div>
+    <form
+      (ngSubmit)="onRegister()"
+      name="registerForm"
+      [formGroup]="registerForm"
+    >
+      <div class="input-container">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input
+            formControlName="nom"
+            matInput
+            placeholder="Votre nom"
+            required
+            [value]="registerForm.get('nom')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['nom'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Enter email address"
+            required
+            [value]="registerForm.get('email')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['email'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input-container">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input
+            formControlName="password"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            required
+            [value]="registerForm.get('password')?.value"
+          />
+
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide Password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>
+              {{ hide ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </button>
+          <mat-error *ngIf="!registerForm.controls['password'].valid">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Rôle</mat-label>
+          <mat-select formControlName="userType">
+            <mat-option value="eleve">étudiants</mat-option>
+            <mat-option value="professeur">professeur</mat-option>
+          </mat-select>
+          <mat-error *ngIf="!registerForm.controls['userType'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Téléphone</mat-label>
+          <input
+            formControlName="telephone"
+            matInput
+            required
+            [value]="registerForm.get('telephone')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['telephone'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Rue</mat-label>
+          <input
+            formControlName="rue"
+            matInput
+            required
+            [value]="registerForm.get('rue')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['rue'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Numero de la rue</mat-label>
+          <input
+            formControlName="numero"
+            matInput
+            required
+            [value]="registerForm.get('numero')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['numero'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Code postal</mat-label>
+          <input
+            formControlName="codePostale"
+            matInput
+            required
+            [value]="registerForm.get('codePostale')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['codePostale'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Ville</mat-label>
+          <input
+            formControlName="ville"
+            matInput
+            required
+            [value]="registerForm.get('ville')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['ville'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Pays</mat-label>
+          <input
+            formControlName="pays"
+            matInput
+            required
+            [value]="registerForm.get('pays')?.value"
+          />
+
+          <mat-error *ngIf="!registerForm.controls['pays'].valid">
+            Ce champ est obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-flat-button color="primary">S'inscrire</button>
+    </form>
+
+    <button
+      mat-flat-button
+      color="blue"
+      routerLink="register"
+      class="button-row"
+      (click)="backToLogin()"
+    >
+      Se connecter
+    </button>
+  </mat-card-content>
+</mat-card>

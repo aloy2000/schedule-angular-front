@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -29,6 +29,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegisterComponent } from './register/register.component';
+import { MatSelectModule } from '@angular/material/select';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 
 
 
@@ -41,6 +44,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TableColumnComponent,
     DialogComponent,
     NavMenuComponent,
+    RegisterComponent,
+    CourseDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

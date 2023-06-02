@@ -1,5 +1,8 @@
 <div class="container">
   <div class="logout-container">
+    <button *ngIf="isProf" (click)="createCourseDialog()" mat-button style="background: green; color: white">
+      Ajouter un cours
+    </button>
     <button (click)="logout()" mat-button style="background: red; color: white">
       Déconnexion
     </button>

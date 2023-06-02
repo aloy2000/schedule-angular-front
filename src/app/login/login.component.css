@@ -17,7 +17,7 @@ mat-card {
 }
 
 .button-row a {
-  margin-right: 8px;
+  margin-right: 3px;
   text-align: center;
 }
 
@@ -35,8 +35,13 @@ mat-card {
   display: block;
 }
 
+.account-register {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .aLink {
-  float: right;
+  margin-left: 5px;
+  /* float: right;
   padding-right: 60px;
-  text-decoration: none;
+  text-decoration: none; */
 }

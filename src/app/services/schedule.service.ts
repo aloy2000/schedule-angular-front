@@ -43,7 +43,7 @@ export type ScheduleType = {
   _id?: string;
   theme: string;
   Periode: number;
-  Date: string;
+  Date: string | Date;
   Level: string;
   Absence?: string;
   heure?: number;
