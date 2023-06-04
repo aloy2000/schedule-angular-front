@@ -12,6 +12,10 @@ export class ScheduleService {
     return this.http.get<ScheduleType[]>('http://localhost:3000/cours');
   }
 
+  getCheduleById(id: string) {
+    return this.http.get<ScheduleType>(`http://localhost:3000/cours/${id}`);
+  }
+
   createSchedule(schedule: ScheduleType) {
     return this.http.post<ScheduleType>(
       'http://localhost:3000/cours',
@@ -48,6 +52,7 @@ export type ScheduleType = {
   Absence?: string;
   heure?: number;
   professeurs: Array<professeur>;
+  id_professeur?: string;
 };
 
 type professeur = {

@@ -32,8 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegisterComponent } from './register/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
-
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -72,7 +71,8 @@ import { CourseDialogComponent } from './course-dialog/course-dialog.component';
     MatMenuModule,
     MatSnackBarModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

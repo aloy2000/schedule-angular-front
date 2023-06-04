@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ScheduleType } from '../services/schedule.service';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
@@ -15,8 +15,8 @@ export class TableColumnComponent {
 
   constructor(public dialog: MatDialog) {}
 
-  async openDialog(course: ScheduleType) {
-    const dialog = await this.dialog.open(DialogComponent, {
+   openDialog(course: ScheduleType) {
+    const dialog = this.dialog.open(DialogComponent, {
       data: course,
     });
 

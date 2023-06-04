@@ -3,6 +3,11 @@ import { ScheduleService, ScheduleType } from '../services/schedule.service';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CourseDialogComponent } from '../course-dialog/course-dialog.component';
+import { CalendarOptions, EventClickArg } from '@fullcalendar/core'; // useful for typechecking
+import dayGridPlugin from '@fullcalendar/daygrid';
+import { DialogComponent } from '../dialog/dialog.component';
+import frLocale from '@fullcalendar/core/locales/fr'; // Import the locale
+
 
 @Component({
   selector: 'app-dashbord',
@@ -13,11 +18,23 @@ import { CourseDialogComponent } from '../course-dialog/course-dialog.component'
 export class DashbordComponent implements OnInit {
   scheduleData: ScheduleType[] = [];
   isStudent: boolean = false;
-  days : string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  isProf: boolean = localStorage.getItem('role') === 'professeur' ? true : false
-  heures : string[] = ['09:00', '10:00','11:00'];
+  isProf: boolean =
+    localStorage.getItem('role') === 'professeur' ? true : false;
+  schedule: any = [];
 
-  constructor(private scheduleService: ScheduleService,private authService: AuthService, public dialog: MatDialog) {}
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin],
+    displayEventTime: false,
+    locale: frLocale, 
+    eventClick: this.handleEventClick.bind(this),
+  };
+
+  constructor(
+    public scheduleService: ScheduleService,
+    public authService: AuthService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('role') === 'professeur') {
@@ -26,12 +43,22 @@ export class DashbordComponent implements OnInit {
       this.isStudent = true;
     }
     this.onGetSchedule();
-    
   }
-  
+
   onGetSchedule() {
     this.scheduleService.getSchedule().subscribe((res: ScheduleType[]) => {
+      console.log(res);
+      let scheduleTmp: any[] = [];
+      res.map(function (res) {
+        scheduleTmp.push({
+          id: res._id,
+          title: `${res.theme} - Avec ${res.professeurs[0].nom}`,
+          teacherName: res.professeurs[0].nom,
+          date: res.Date,
+        });
+      });
       this.scheduleData = res;
+      this.calendarOptions = { ...this.calendarOptions, events: scheduleTmp };
     });
   }
 
@@ -41,8 +68,16 @@ export class DashbordComponent implements OnInit {
   }
 
   createCourseDialog() {
-    const dialog =  this.dialog.open(CourseDialogComponent);
-    dialog.afterClosed().subscribe((result) => {
+    const dialog = this.dialog.open(CourseDialogComponent);
+    dialog.afterClosed().subscribe((result) => {});
+  }
+
+  handleEventClick(arg: EventClickArg) {
+    this.scheduleService.getCheduleById(arg.event.id).subscribe((res) => {
+      const dialog = this.dialog.open(DialogComponent, {
+        data: res,
+      });
+      dialog.afterClosed().subscribe((result) => {});
     });
   }
 }

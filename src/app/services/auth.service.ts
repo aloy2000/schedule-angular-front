@@ -55,6 +55,10 @@ export class AuthService {
         })
       )
   }
+
+  getTeacherById(id:string) {
+      return this.http.get<any>(`http://localhost:3000/professeur/${id}`)
+  } 
 }
 
 type Role = 'eleve' | 'professeur';
